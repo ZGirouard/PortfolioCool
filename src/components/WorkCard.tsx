@@ -9,6 +9,9 @@ const Card = styled.div<{ $backgroundColor: string }>`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.28),
+    0 4px 10px rgba(0, 0, 0, 0.18);
 `
 
 const Image = styled.img`
@@ -16,6 +19,10 @@ const Image = styled.img`
   height: 200px;
   object-fit: cover;
   display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 `
 
 export type WorkCardProps = {
@@ -31,7 +38,13 @@ export function WorkCard({
 }: WorkCardProps) {
   return (
     <Card $backgroundColor={backgroundColor}>
-      <Image src={imageSrc} alt={imageAlt} width={200} height={200} />
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        width={200}
+        height={200}
+        draggable={false}
+      />
     </Card>
   )
 }

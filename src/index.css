@@ -3,6 +3,7 @@ html {
   max-height: 100dvh;
   overflow: hidden;
   overscroll-behavior: none;
+  background-color: #000;
 }
 
 body {
@@ -11,9 +12,11 @@ body {
   overflow: hidden;
   overscroll-behavior: none;
   font-family: 'Bebas Neue', sans-serif;
+  background-color: #000;
 }
 
 #root {
   height: 100%;
   overflow: hidden;
+  background-color: #000;
 }
