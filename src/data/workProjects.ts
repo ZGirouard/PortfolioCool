@@ -14,21 +14,21 @@ export const workProjectMeta: Record<
     title: 'Kiewit',
     tagline:
       'Cloud cost and utilization monitoring application built for Kiewit, designed to give product teams direct visibility into underutilized or orphaned resources.',
-    iconSrc: '/Kiewit.png',
+    iconSrc: '/KiewitFilled.svg',
     iconAlt: 'Kiewit',
   },
   aviture: {
     title: 'Aviture',
     tagline:
       'Recruiting software development for the U.S. Air Force, focusing on front-end development, UX refinement, and data integration.',
-    iconSrc: '/Aviture.png',
+    iconSrc: '/AvitureFilled.svg',
     iconAlt: 'Aviture',
   },
   unl: {
     title: 'University of Nebraska–Lincoln',
     tagline:
       'Web development and UX design for the University of Nebraska-Lincoln, creating accessible, student-first interfaces and durable patterns across campus web properties.',
-    iconSrc: '/UNL.png',
+    iconSrc: '/UNLFilled.svg',
     iconAlt: 'University of Nebraska–Lincoln',
   },
 }

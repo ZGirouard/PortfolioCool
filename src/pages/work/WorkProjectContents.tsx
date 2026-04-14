@@ -13,13 +13,13 @@ export function KiewitProjectBody() {
     <>
       <MosaicGrid aria-label="Kiewit work samples">
         <MosaicCell colSpan={12} rowSpan={3}>
-          <MosaicImg src="/Kiewit.png" alt="Kiewit" />
+          <MosaicImg src="/Kiewit1.jpg" alt="Kiewit" />
         </MosaicCell>
         <MosaicCell colSpan={5} rowSpan={3}>
-          <MosaicImg src="/Kiewit.png" alt="" />
+          <MosaicImg src="/Kiewit2.jpg" alt="Kiewit" />
         </MosaicCell>
         <MosaicCell colSpan={7} rowSpan={3}>
-          <MosaicImg src="/Kiewit.png" alt="" />
+          <MosaicImg src="/Kiewit3.webp" alt="Kiewit" />
         </MosaicCell>
       </MosaicGrid>
 
@@ -32,14 +32,16 @@ export function KiewitProjectBody() {
       </WorkPageDescription>
 
       <MosaicGrid aria-label="More Kiewit imagery">
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/Kiewit.png" alt="" />
+        <MosaicCell colSpan={6} rowSpan={2}>
+          <MosaicImg src="/Kiewit4.webp" alt="Kiewit" />
         </MosaicCell>
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/Kiewit.png" alt="" />
+        <MosaicCell colSpan={6} rowSpan={2}>
+          <MosaicImg src="/Kiewit5.webp" alt="Kiewit" />
         </MosaicCell>
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/Kiewit.png" alt="" />
+      </MosaicGrid>
+      <MosaicGrid aria-label="More Kiewit imagery">
+      <MosaicCell colSpan={12} rowSpan={2}>
+          <MosaicImg src="/Kiewit6.webp" alt="Kiewit" />
         </MosaicCell>
       </MosaicGrid>
       <WorkPageDescription>
@@ -61,13 +63,13 @@ export function AvitureProjectBody() {
     <>
       <MosaicGrid aria-label="Aviture work samples">
         <MosaicCell colSpan={7} rowSpan={3}>
-          <MosaicImg src="/Aviture.png" alt="Aviture" />
+          <MosaicImg src="/AV1.jpg" alt="Air Force" />
         </MosaicCell>
         <MosaicCell colSpan={5} rowSpan={3}>
-          <MosaicImg src="/Aviture.png" alt="" />
+          <MosaicImg src="/AV2.avif" alt="Air Force" />
         </MosaicCell>
         <MosaicCell colSpan={12} rowSpan={2}>
-          <MosaicImg src="/Aviture.png" alt="" />
+          <MosaicImg src="/AV3.jpeg" alt="Air Force" />
         </MosaicCell>
       </MosaicGrid>
 
@@ -81,10 +83,10 @@ export function AvitureProjectBody() {
 
       <MosaicGrid aria-label="More Aviture imagery">
         <MosaicCell colSpan={6} rowSpan={3}>
-          <MosaicImg src="/Aviture.png" alt="" />
+          <MosaicImg src="/AV4.jpeg" alt="Air Force" />
         </MosaicCell>
         <MosaicCell colSpan={6} rowSpan={3}>
-          <MosaicImg src="/Aviture.png" alt="" />
+          <MosaicImg src="/AV5.avif" alt="Air Force" />
         </MosaicCell>
       </MosaicGrid>
       <WorkPageDescription>
@@ -112,13 +114,13 @@ export function UNLProjectBody() {
     <>
       <MosaicGrid aria-label="UNL work samples">
         <MosaicCell colSpan={12} rowSpan={2}>
-          <MosaicImg src="/UNL.png" alt="University of Nebraska–Lincoln" />
+          <MosaicImg src="/UNL6.jpeg" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
-        <MosaicCell colSpan={6} rowSpan={3}>
-          <MosaicImg src="/UNL.png" alt="" />
+        <MosaicCell colSpan={4} rowSpan={3}>
+          <MosaicImg src="/UNL2.jpeg" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
-        <MosaicCell colSpan={6} rowSpan={3}>
-          <MosaicImg src="/UNL.png" alt="" />
+        <MosaicCell colSpan={8} rowSpan={3}>
+          <MosaicImg src="/UNL1.png" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
       </MosaicGrid>
 
@@ -131,14 +133,11 @@ export function UNLProjectBody() {
       </WorkPageDescription>
 
       <MosaicGrid aria-label="More UNL imagery">
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/UNL.png" alt="" />
+        <MosaicCell colSpan={6} rowSpan={2}>
+          <MosaicImg src="/UNL4.png" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/UNL.png" alt="" />
-        </MosaicCell>
-        <MosaicCell colSpan={4} rowSpan={2}>
-          <MosaicImg src="/UNL.png" alt="" />
+        <MosaicCell colSpan={6} rowSpan={2}>
+          <MosaicImg src="/UNL3.jpg" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
       </MosaicGrid>
       <WorkPageDescription>
