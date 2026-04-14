@@ -2,6 +2,8 @@ import {
   MosaicCell,
   MosaicGrid,
   WorkPageDescription,
+  WorkPageDescriptionTitle,
+  WorkPageDescriptionContainer,
 } from '../../components/WorkPageTemplate'
 
 function MosaicImg({ src, alt }: { src: string; alt: string }) {
@@ -15,6 +17,16 @@ export function KiewitProjectBody() {
         <MosaicCell colSpan={12} rowSpan={3}>
           <MosaicImg src="/Kiewit1.jpg" alt="Kiewit" />
         </MosaicCell>
+      </MosaicGrid>
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>Project Overview</WorkPageDescriptionTitle>
+      <WorkPageDescription>
+        <p>
+        CORGI is a cloud cost and utilization monitoring application built for Kiewit, designed to give product teams direct visibility into underutilized or orphaned resources. The goal was to reduce waste, optimize cloud spending, and empower teams to act independently without relying solely on DevOps. I collaborated with a multidisciplinary team to design, develop, and deploy the system, ensuring it combined usability, functionality, and predictive insights.
+        </p>
+      </WorkPageDescription>
+      </WorkPageDescriptionContainer>
+      <MosaicGrid aria-label="More Kiewit imagery">
         <MosaicCell colSpan={5} rowSpan={3}>
           <MosaicImg src="/Kiewit2.jpg" alt="Kiewit" />
         </MosaicCell>
@@ -22,14 +34,6 @@ export function KiewitProjectBody() {
           <MosaicImg src="/Kiewit3.webp" alt="Kiewit" />
         </MosaicCell>
       </MosaicGrid>
-
-      <WorkPageDescription>
-        <p>
-        CORGI is a cloud cost and utilization monitoring application built for Kiewit, designed to give product teams direct visibility into underutilized or orphaned resources. 
-        The goal was to reduce waste, optimize cloud spending, and empower teams to act independently without relying solely on DevOps. 
-        I collaborated with a multidisciplinary team to design, develop, and deploy the system, ensuring it combined usability, functionality, and predictive insights.
-        </p>
-      </WorkPageDescription>
 
       <MosaicGrid aria-label="More Kiewit imagery">
         <MosaicCell colSpan={6} rowSpan={2}>
@@ -39,11 +43,8 @@ export function KiewitProjectBody() {
           <MosaicImg src="/Kiewit5.webp" alt="Kiewit" />
         </MosaicCell>
       </MosaicGrid>
-      <MosaicGrid aria-label="More Kiewit imagery">
-      <MosaicCell colSpan={12} rowSpan={2}>
-          <MosaicImg src="/Kiewit6.webp" alt="Kiewit" />
-        </MosaicCell>
-      </MosaicGrid>
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>Project Outcomes</WorkPageDescriptionTitle>
       <WorkPageDescription>
       The CORGI project delivered a fully functional platform that:
       <ul>
@@ -54,6 +55,12 @@ export function KiewitProjectBody() {
         <li>Strengthened stakeholder engagement through clear presentations and iterative feedback, creating a product that is both practical and impactful.</li>
       </ul>
       </WorkPageDescription>
+      </WorkPageDescriptionContainer>
+      <MosaicGrid aria-label="More Kiewit imagery">
+      <MosaicCell colSpan={12} rowSpan={2}>
+          <MosaicImg src="/Kiewit6.webp" alt="Kiewit" />
+        </MosaicCell>
+      </MosaicGrid>
     </>
   )
 }
@@ -69,34 +76,40 @@ export function AvitureProjectBody() {
           <MosaicImg src="/AV2.avif" alt="Air Force" />
         </MosaicCell>
         <MosaicCell colSpan={12} rowSpan={2}>
-          <MosaicImg src="/AV3.jpeg" alt="Air Force" />
+          <MosaicImg src="/AV4.png" alt="Air Force" />
         </MosaicCell>
       </MosaicGrid>
-
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>Role Overview</WorkPageDescriptionTitle>
       <WorkPageDescription>
         <p>
-        Over the past four months, I’ve been working with Aviture, a custom software development company, on the Aim High team, developing recruiting software for the U.S. Air Force. 
+        Over the past 10 months, I’ve been working with Aviture, a custom software development company, on the Aim High team, developing recruiting software for the U.S. Air Force. 
         My role bridges front-end development, UX refinement, and data integration, with a focus on building functional and user-friendly components while tracking and analyzing user interactions. 
-        I also actively participated in professional development events, including presenting a Lightning Talk to the company.
+        I also actively participated in professional development events, including presenting a Lightning Talk to the company and attending Nebraska Code, a regional development conference.
         </p>
       </WorkPageDescription>
-
+      </WorkPageDescriptionContainer>
       <MosaicGrid aria-label="More Aviture imagery">
         <MosaicCell colSpan={6} rowSpan={3}>
-          <MosaicImg src="/AV4.jpeg" alt="Air Force" />
+          <MosaicImg src="/AV3.jpeg" alt="Air Force" />
         </MosaicCell>
         <MosaicCell colSpan={6} rowSpan={3}>
           <MosaicImg src="/AV5.avif" alt="Air Force" />
         </MosaicCell>
       </MosaicGrid>
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>
+        Technical Contributions
+      </WorkPageDescriptionTitle>
       <WorkPageDescription>
         <ul>
-          <li>Front-End Development: Built custom web components using React and CSS, integrating with serverless AWS architecture and reading/writing data to DynamoDB.</li>
-          <li>Analytics & Tracking: Implemented page and button tracking with Google Analytics to capture user interactions and inform product decisions.</li>
-          <li>Team Collaboration & Agile Practices: Engaged in backlog refinement, sprint planning, demos, stand-ups, UX refinement, requirements meetings, and sprint retrospectives to ensure high-quality deliverables.</li>
-          <li>Professional Engagement: Attended Nebraska Code, a regional development conference, and delivered a Lightning Talk to share knowledge with the team.</li>
+          <li><b>Front-End Development:</b> Built custom web components using React and CSS, integrating with serverless AWS architecture and reading/writing data to DynamoDB.</li>
+          <li><b>Analytics & Tracking:</b> Implemented page and button tracking with Google Analytics to capture user interactions and inform product decisions.</li>
+          <li><b>Team Collaboration & Agile Practices:</b> Engaged in backlog refinement, sprint planning, demos, stand-ups, UX refinement, requirements meetings, and sprint retrospectives to ensure high-quality deliverables.</li>
+          <li><b>Professional Engagement:</b> Attended Nebraska Code, a regional development conference, and delivered a Lightning Talk to share knowledge with the team.</li>
         </ul>
         </WorkPageDescription>
+        <WorkPageDescriptionTitle>Outcomes</WorkPageDescriptionTitle>
         <WorkPageDescription>
           <ul>
             <li>Delivered functional and reusable React components, improving the speed and efficiency of the Aim High recruiting platform.</li>
@@ -105,6 +118,7 @@ export function AvitureProjectBody() {
             <li>Expanded professional skills in software development, cloud-based architecture, and public presentation, positioning me to contribute effectively to both technical and cross-functional projects.</li>
           </ul>
         </WorkPageDescription>
+      </WorkPageDescriptionContainer>
     </>
   )
 }
@@ -124,6 +138,8 @@ export function UNLProjectBody() {
         </MosaicCell>
       </MosaicGrid>
 
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>Role Overview</WorkPageDescriptionTitle>
       <WorkPageDescription>
         <p>
         During my 16-month internship with the Digital Experience Group (DXG) at the University of Nebraska-Lincoln, I worked at the intersection of web development, UX design, and digital content management. 
@@ -131,6 +147,7 @@ export function UNLProjectBody() {
         My work combined front-end development, design mockups, and hands-on training for staff.
         </p>
       </WorkPageDescription>
+      </WorkPageDescriptionContainer>
 
       <MosaicGrid aria-label="More UNL imagery">
         <MosaicCell colSpan={6} rowSpan={2}>
@@ -140,13 +157,16 @@ export function UNLProjectBody() {
           <MosaicImg src="/UNL3.jpg" alt="University of Nebraska–Lincoln" />
         </MosaicCell>
       </MosaicGrid>
+      <WorkPageDescriptionContainer>
+      <WorkPageDescriptionTitle>Technical Contributions</WorkPageDescriptionTitle>
       <WorkPageDescription>
           <ul>
-            <li>Web Development & Design: Used Drupal 10 CMS to recreate and maintain web pages with a focus on accessibility and usability. Created templates using Twig and implemented custom layouts with HTML, CSS, and JavaScript. Altered graphics using Adobe Photoshop and Illustrator to meet web requirements.</li>
-            <li>Polling App Project: Designed mockups in Figma and developed the frontend using the UNL DCF Framework and Angular JavaScript. Collaborated with ITS team members in design and development meetings, then handed off frontend and design assets so they could connect the app to the backend.</li>
-            <li>Team Collaboration: Participated in stand-ups, tracked progress, and provided CMS training to staff, ensuring smooth adoption of web tools and templates.</li>
+            <li><b>Web Development & Design:</b> Used Drupal 10 CMS to recreate and maintain web pages with a focus on accessibility and usability. Created templates using Twig and implemented custom layouts with HTML, CSS, and JavaScript. Altered graphics using Adobe Photoshop and Illustrator to meet web requirements.</li>
+            <li><b>Polling App Project:</b> Designed mockups in Figma and developed the frontend using the UNL DCF Framework and Angular JavaScript. Collaborated with ITS team members in design and development meetings, then handed off frontend and design assets so they could connect the app to the backend.</li>
+            <li><b>Team Collaboration:</b> Participated in stand-ups, tracked progress, and provided CMS training to staff, ensuring smooth adoption of web tools and templates.</li>
           </ul>
         </WorkPageDescription>
+        <WorkPageDescriptionTitle>Outcomes</WorkPageDescriptionTitle>
         <WorkPageDescription>
           <ul>
             <li>Delivered functional, accessible web pages and templates that enhanced the university’s digital presence.</li>
@@ -155,6 +175,7 @@ export function UNLProjectBody() {
             <li>Gained hands-on experience in UX design, front-end development, CMS management, and team coordination, equipping me with a versatile skill set for future technology and design projects.</li>
           </ul>
         </WorkPageDescription>
+        </WorkPageDescriptionContainer>
     </>
   )
 }

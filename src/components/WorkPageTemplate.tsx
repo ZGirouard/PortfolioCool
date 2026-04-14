@@ -58,19 +58,25 @@ export const MosaicGrid = styled.div`
   width: 100%;
 `
 
+export const WorkPageDescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 3vw, 1.5rem);
+  max-width: 56rem;
+  margin: 0 auto;
+`
 /** Prose between mosaic rows—paragraphs, lists, or short headings. */
 export const WorkPageDescription = styled.div`
   box-sizing: border-box;
   max-width: 56rem;
   width: 100%;
-  margin: 0 auto;
   font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.8);
 
   p {
-    margin: 0 0 1rem;
+    margin: 0;
   }
 
   p:last-child {
@@ -86,18 +92,16 @@ export const WorkPageDescription = styled.div`
   li {
     margin-bottom: 0.35rem;
   }
-
-  h2,
-  h3 {
-    margin: 0 0 0.5rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: #fff;
-  }
 `
 
+export const WorkPageDescriptionTitle = styled.h2`
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #fff;
+`
 export type MosaicCellProps = {
   children?: ReactNode
   /** Number of columns (of 12) this cell spans. */
@@ -131,10 +135,6 @@ export type WorkPageTemplateProps = {
   children: ReactNode
 }
 
-/**
- * Title → tagline → body. In the body, alternate `MosaicGrid` (with `MosaicCell` inside)
- * and `WorkPageDescription` blocks as needed for each project.
- */
 export function WorkPageTemplate({ title, tagline, children }: WorkPageTemplateProps) {
   return (
     <Shell aria-label="Work project">

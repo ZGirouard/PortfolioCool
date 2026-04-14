@@ -342,8 +342,7 @@ export function ContactPage() {
       <Inner>
         <Title>Contact</Title>
         <Tagline>
-          Say hello—whether it’s about a role, a project, or coffee. I’ll get back to you as
-          soon as I can.
+          Say hello! Whether it's about a role, a project, or coffee, I'll get back to you as soon as I can.
         </Tagline>
 
         <Form onSubmit={onSubmit}>
