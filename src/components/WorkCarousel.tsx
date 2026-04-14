@@ -76,6 +76,8 @@ const MOMENTUM_MAX_SPEED = 4
 const FRICTION_BASE = 0.942
 /** stop when |v| below this (px/ms) */
 const MOMENTUM_STOP_SPEED = 0.032
+/** Pixels of horizontal movement before carousel drag “wins” over link clicks. */
+const DRAG_THRESHOLD_PX = 10
 
 export type WorkCarouselProps = {
   children: ReactNode
@@ -94,6 +96,8 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
 
   const dragRef = useRef({
     active: false,
+    /** True only after horizontal movement exceeds DRAG_THRESHOLD_PX (pointer capture then applies). */
+    dragging: false,
     pointerId: -1,
     startX: 0,
     startScroll: 0,
@@ -275,12 +279,12 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
 
     dragRef.current = {
       active: true,
+      dragging: false,
       pointerId: e.pointerId,
       startX: e.clientX,
       startScroll: el.scrollLeft,
     }
-    setDragging(true)
-    el.setPointerCapture(e.pointerId)
+    /* Defer setPointerCapture until DRAG_THRESHOLD_PX so <a> tags receive click when the user doesn’t drag. */
   }
 
   const onPointerMove = (e: ReactPointerEvent) => {
@@ -288,6 +292,21 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     if (!d.active || e.pointerId !== d.pointerId) return
     const el = viewportRef.current
     if (!el) return
+
+    const rawDx = e.clientX - d.startX
+
+    if (!d.dragging) {
+      if (Math.abs(rawDx) < DRAG_THRESHOLD_PX) return
+      d.dragging = true
+      setDragging(true)
+      try {
+        el.setPointerCapture(e.pointerId)
+      } catch {
+        /* capture unavailable */
+      }
+      velocitySamplesRef.current = []
+      lastSampleRef.current = { x: e.clientX, t: performance.now() }
+    }
 
     const now = performance.now()
     const prev = lastSampleRef.current
@@ -301,8 +320,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     }
     lastSampleRef.current = { x: e.clientX, t: now }
 
-    const dx = e.clientX - d.startX
-    el.scrollLeft = d.startScroll - dx
+    el.scrollLeft = d.startScroll - (e.clientX - d.startX)
     syncAndUpdateScales()
   }
 
@@ -310,12 +328,18 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     const d = dragRef.current
     if (!d.active || pointerId !== d.pointerId) return
 
-    const v = consumeReleaseVelocity()
+    const v = d.dragging ? consumeReleaseVelocity() : 0
 
-    dragRef.current = { ...d, active: false, pointerId: -1 }
+    dragRef.current = {
+      active: false,
+      dragging: false,
+      pointerId: -1,
+      startX: 0,
+      startScroll: 0,
+    }
     setDragging(false)
 
-    if (releaseCapture) {
+    if (releaseCapture && d.dragging) {
       try {
         viewportRef.current?.releasePointerCapture(pointerId)
       } catch {
@@ -323,7 +347,9 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       }
     }
 
-    startMomentum(v)
+    if (d.dragging) {
+      startMomentum(v)
+    }
   }
 
   const onPointerUp = (e: ReactPointerEvent) => {

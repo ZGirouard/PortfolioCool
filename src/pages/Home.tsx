@@ -20,16 +20,19 @@ export function HomePage() {
     <Shell aria-label="Home">
       <WorkCarousel>
         <WorkCard
+          to="/work/kiewit"
           backgroundColor="#FFD200"
           imageSrc="/Kiewit.png"
           imageAlt="Kiewit"
         />
         <WorkCard
+          to="/work/aviture"
           backgroundColor="#F03B34"
           imageSrc="/Aviture.png"
           imageAlt="Aviture"
         />
         <WorkCard
+          to="/work/unl"
           backgroundColor="#E31937"
           imageSrc="/UNL.png"
           imageAlt="University of Nebraska–Lincoln"

@@ -1,0 +1,158 @@
+import styled from '@emotion/styled'
+import type { ReactNode } from 'react'
+
+const BOTTOM_SAFE = '5.5rem'
+
+const Shell = styled.main`
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #0a0a0c;
+  color: #f5f5f5;
+  padding: 1.75rem 1.25rem ${BOTTOM_SAFE};
+`
+
+const Header = styled.header`
+  max-width: 56rem;
+  margin: 0 auto 2rem;
+`
+
+const Title = styled.h1`
+  margin: 0 0 0.65rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: #fff;
+`
+
+const Tagline = styled.p`
+  margin: 0;
+  max-width: 40rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+`
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  max-width: 72rem;
+  margin: 0 auto;
+  width: 100%;
+`
+
+/** One mosaic “band”: only `MosaicCell` items belong inside. Stack multiple grids and separate them with `WorkPageDescription`. */
+export const MosaicGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(72px, auto);
+  gap: clamp(0.5rem, 1.5vw, 0.85rem);
+  width: 100%;
+`
+
+/** Prose between mosaic rows—paragraphs, lists, or short headings. */
+export const WorkPageDescription = styled.div`
+  box-sizing: border-box;
+  max-width: 56rem;
+  width: 100%;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 1rem;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.35rem;
+  }
+
+  h2,
+  h3 {
+    margin: 0 0 0.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+`
+
+export type MosaicCellProps = {
+  children?: ReactNode
+  /** Number of columns (of 12) this cell spans. */
+  colSpan?: number
+  /** Number of implicit row tracks this cell spans. */
+  rowSpan?: number
+}
+
+const Cell = styled.div<{
+  $colSpan: number
+  $rowSpan: number
+}>`
+  grid-column: span ${(p) => p.$colSpan};
+  grid-row: span ${(p) => p.$rowSpan};
+  min-height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #14151a;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
+
+export type WorkPageTemplateProps = {
+  title: ReactNode
+  tagline: ReactNode
+  children: ReactNode
+}
+
+/**
+ * Title → tagline → body. In the body, alternate `MosaicGrid` (with `MosaicCell` inside)
+ * and `WorkPageDescription` blocks as needed for each project.
+ */
+export function WorkPageTemplate({ title, tagline, children }: WorkPageTemplateProps) {
+  return (
+    <Shell aria-label="Work project">
+      <Header>
+        <Title>{title}</Title>
+        <Tagline>{tagline}</Tagline>
+      </Header>
+      <Body>{children}</Body>
+    </Shell>
+  )
+}
+
+export function MosaicCell({ children, colSpan = 6, rowSpan = 2 }: MosaicCellProps) {
+  const c = Math.min(12, Math.max(1, colSpan))
+  const r = Math.max(1, rowSpan)
+  return (
+    <Cell $colSpan={c} $rowSpan={r}>
+      {children}
+    </Cell>
+  )
+}

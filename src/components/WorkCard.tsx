@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 const Card = styled.div<{ $backgroundColor: string }>`
   width: 440px;
@@ -25,18 +26,27 @@ const Image = styled.img`
   pointer-events: none;
 `
 
+const CardLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+`
+
 export type WorkCardProps = {
   backgroundColor: string
   imageSrc: string
   imageAlt: string
+  /** When set, the whole card navigates to this route. */
+  to?: string
 }
 
 export function WorkCard({
   backgroundColor,
   imageSrc,
   imageAlt,
+  to,
 }: WorkCardProps) {
-  return (
+  const card = (
     <Card $backgroundColor={backgroundColor}>
       <Image
         src={imageSrc}
@@ -47,4 +57,10 @@ export function WorkCard({
       />
     </Card>
   )
+
+  if (to) {
+    return <CardLink to={to}>{card}</CardLink>
+  }
+
+  return card
 }
