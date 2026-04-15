@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Outlet, useLocation, useNavigationType } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigationType } from 'react-router-dom'
 import { BasicText } from './BasicText'
 import { SiteMenu } from './SiteMenu'
 
@@ -61,6 +61,17 @@ const NameText = styled(BasicText)`
   -webkit-touch-callout: none;
 `
 
+const NameLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.85);
+    outline-offset: 6px;
+    border-radius: 4px;
+  }
+`
+
 export function AppLayout() {
   const location = useLocation()
   const navigationType = useNavigationType()
@@ -91,7 +102,9 @@ export function AppLayout() {
         </AnimatePresence>
       </PageStage>
       <BottomBar>
-        <NameText>Zach Girouard</NameText>
+        <NameLink to="/" aria-label="Go to home page">
+          <NameText>Zach Girouard</NameText>
+        </NameLink>
         <SiteMenu />
       </BottomBar>
     </>

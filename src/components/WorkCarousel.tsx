@@ -16,6 +16,7 @@ import styled from '@emotion/styled'
 
 const Viewport = styled.div<{ $dragging: boolean }>`
   position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   top: 50%;
@@ -23,7 +24,9 @@ const Viewport = styled.div<{ $dragging: boolean }>`
   margin-top: -100px;
   width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
+  padding-top: 0.4rem;
+  padding-bottom: 1.4rem;
   touch-action: none;
   cursor: ${(p) => (p.$dragging ? 'grabbing' : 'grab')};
   user-select: none;
