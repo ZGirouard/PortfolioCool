@@ -82,7 +82,6 @@ const Body = styled.div`
   width: 100%;
 `
 
-/** One mosaic “band”: only `MosaicCell` items belong inside. Stack multiple grids and separate them with `WorkPageDescription`. */
 export const MosaicGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -98,7 +97,6 @@ export const WorkPageDescriptionContainer = styled.div`
   max-width: 56rem;
   margin: 0 auto;
 `
-/** Prose between mosaic rows—paragraphs, lists, or short headings. */
 export const WorkPageDescription = styled.div`
   box-sizing: border-box;
   max-width: 56rem;
@@ -137,9 +135,7 @@ export const WorkPageDescriptionTitle = styled.h2`
 `
 export type MosaicCellProps = {
   children?: ReactNode
-  /** Number of columns (of 12) this cell spans. */
   colSpan?: number
-  /** Number of implicit row tracks this cell spans. */
   rowSpan?: number
 }
 

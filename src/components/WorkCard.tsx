@@ -111,9 +111,7 @@ export type WorkCardProps = {
   backgroundColor: string
   imageSrc: string
   imageAlt: string
-  /** Shown under the card on hover/focus (e.g. project title). */
   title?: string
-  /** When set, the whole card navigates to this route. */
   to?: string
 }
 

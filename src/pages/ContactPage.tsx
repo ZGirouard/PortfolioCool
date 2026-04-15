@@ -310,7 +310,7 @@ export function ContactPage() {
       try {
         data = (await res.json()) as FormspreeJson
       } catch {
-        /* non-JSON error body */
+        void 0
       }
 
       if (res.ok) {

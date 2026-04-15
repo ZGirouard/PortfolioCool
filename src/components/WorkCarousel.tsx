@@ -55,7 +55,6 @@ const Set = styled.div`
   flex-shrink: 0;
 `
 
-/** Wraps each card; scale is driven from scroll position for center “focus”. */
 const CardScaleSlot = styled.div`
   flex-shrink: 0;
   transform-origin: center center;
@@ -64,23 +63,15 @@ const CardScaleSlot = styled.div`
 
 const SET_COUNT = 3
 
-/** Scale of the card closest to viewport center */
 const SCALE_FOCUS = 1.075
-/** Scale when far from center */
 const SCALE_SIDE = 0.8
-/** 0–1 smoothing toward target each update (higher = snappier) */
 const SCALE_LERP = 0.42
 
 const VELOCITY_SAMPLE_CAP = 8
-/** px/ms — below this, no glide after release */
 const MOMENTUM_MIN_SPEED = 0.10
-/** px/ms — cap flick strength */
 const MOMENTUM_MAX_SPEED = 4
-/** ~fraction of velocity retained every ~16.7ms */
 const FRICTION_BASE = 0.942
-/** stop when |v| below this (px/ms) */
 const MOMENTUM_STOP_SPEED = 0.032
-/** Pixels of horizontal movement before carousel drag “wins” over link clicks. */
 const DRAG_THRESHOLD_PX = 10
 
 export type WorkCarouselProps = {
@@ -100,7 +91,6 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
 
   const dragRef = useRef({
     active: false,
-    /** True only after horizontal movement exceeds DRAG_THRESHOLD_PX (pointer capture then applies). */
     dragging: false,
     pointerId: -1,
     startX: 0,
@@ -290,7 +280,6 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       startScroll: el.scrollLeft,
     }
     suppressClickRef.current = false
-    /* Defer setPointerCapture until DRAG_THRESHOLD_PX so <a> tags receive click when the user doesn’t drag. */
   }
 
   const onPointerMove = (e: ReactPointerEvent) => {
@@ -309,7 +298,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       try {
         el.setPointerCapture(e.pointerId)
       } catch {
-        /* capture unavailable */
+        void 0
       }
       velocitySamplesRef.current = []
       lastSampleRef.current = { x: e.clientX, t: performance.now() }
@@ -350,7 +339,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       try {
         viewportRef.current?.releasePointerCapture(pointerId)
       } catch {
-        /* already released */
+        void 0
       }
     }
 

@@ -1,4 +1,3 @@
-/** Formspree form endpoint (AJAX / JSON). */
 export const formspreeEndpoint = 'https://formspree.io/f/mnqeayqe'
 
 export const contactInfo = {
