@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
   type ReactElement,
   type ReactNode,
@@ -102,6 +103,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     startX: 0,
     startScroll: 0,
   })
+  const suppressClickRef = useRef(false)
 
   const lastSampleRef = useRef({ x: 0, t: 0 })
   const velocitySamplesRef = useRef<VelocitySample[]>([])
@@ -284,6 +286,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       startX: e.clientX,
       startScroll: el.scrollLeft,
     }
+    suppressClickRef.current = false
     /* Defer setPointerCapture until DRAG_THRESHOLD_PX so <a> tags receive click when the user doesn’t drag. */
   }
 
@@ -298,6 +301,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     if (!d.dragging) {
       if (Math.abs(rawDx) < DRAG_THRESHOLD_PX) return
       d.dragging = true
+      suppressClickRef.current = true
       setDragging(true)
       try {
         el.setPointerCapture(e.pointerId)
@@ -360,6 +364,13 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
     finalizePointer(e.pointerId, false)
   }
 
+  const onClickCapture = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (!suppressClickRef.current) return
+    e.preventDefault()
+    e.stopPropagation()
+    suppressClickRef.current = false
+  }
+
   return (
     <Viewport
       ref={viewportRef}
@@ -371,6 +382,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
       onLostPointerCapture={onLostPointerCapture}
+      onClickCapture={onClickCapture}
     >
       <Track ref={trackRef}>
         {Array.from({ length: SET_COUNT }, (_, setIdx) => (

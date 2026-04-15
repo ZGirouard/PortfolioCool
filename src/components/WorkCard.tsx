@@ -30,6 +30,8 @@ const CardLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
+  -webkit-user-drag: none;
+  user-select: none;
 `
 
 export type WorkCardProps = {
@@ -59,7 +61,11 @@ export function WorkCard({
   )
 
   if (to) {
-    return <CardLink to={to}>{card}</CardLink>
+    return (
+      <CardLink to={to} draggable={false}>
+        {card}
+      </CardLink>
+    )
   }
 
   return card
