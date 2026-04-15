@@ -47,6 +47,8 @@ const BottomBar = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   padding: 1.5rem 1.5rem 1.25rem;
+  background: #0a0a0c;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   box-sizing: border-box;
   pointer-events: none;
 

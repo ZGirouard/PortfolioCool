@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { type FormEvent, useId, useState } from 'react'
 import { contactInfo, formspreeEndpoint } from '../data/contactInfo'
 
-const BOTTOM_SAFE = '5.5rem'
+const BOTTOM_SAFE = '7rem'
 
 const Shell = styled.main`
   box-sizing: border-box;

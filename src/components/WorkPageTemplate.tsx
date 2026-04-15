@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
 import type { ReactNode } from 'react'
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const BOTTOM_SAFE = '5.5rem'
+const BOTTOM_SAFE = '7rem'
 
 const Shell = styled.main`
   box-sizing: border-box;
@@ -18,6 +20,37 @@ const Shell = styled.main`
 const Header = styled.header`
   max-width: 56rem;
   margin: 0 auto 2rem;
+`
+
+const BackButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.95rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 2px;
+  }
 `
 
 const Title = styled.h1`
@@ -136,9 +169,22 @@ export type WorkPageTemplateProps = {
 }
 
 export function WorkPageTemplate({ title, tagline, children }: WorkPageTemplateProps) {
+  const navigate = useNavigate()
+
+  const goBack = useCallback(() => {
+    if (window.history.length > 1) {
+      navigate(-1)
+      return
+    }
+    navigate('/work')
+  }, [navigate])
+
   return (
     <Shell aria-label="Work project">
       <Header>
+        <BackButton type="button" onClick={goBack} aria-label="Go back">
+          <span aria-hidden>←</span> Back
+        </BackButton>
         <Title>{title}</Title>
         <Tagline>{tagline}</Tagline>
       </Header>
