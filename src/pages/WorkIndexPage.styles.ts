@@ -1,18 +1,13 @@
 import styled from "@emotion/styled"
 import { Link } from "react-router-dom"
+import {
+  BOTTOM_SAFE_LARGE,
+  PageShell,
+  PageTitle as SharedPageTitle,
+} from "../styles/PageShared.styles"
 
-const BOTTOM_SAFE = '5.5rem'
-
-export const Shell = styled.main`
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background: #0a0a0c;
-  color: #f5f5f5;
-  padding: 1.75rem 1.25rem ${BOTTOM_SAFE};
+export const Shell = styled(PageShell)`
+  --page-bottom-safe: ${BOTTOM_SAFE_LARGE};
 `
 
 export const Inner = styled.div`
@@ -20,14 +15,8 @@ export const Inner = styled.div`
   margin: 0 auto;
 `
 
-export const PageTitle = styled.h1`
-  margin: 0 0 1.5rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.25rem, 6vw, 3.75rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  color: #fff;
+export const PageTitle = styled(SharedPageTitle)`
+  margin-bottom: 1.5rem;
 `
 
 export const List = styled.ul`

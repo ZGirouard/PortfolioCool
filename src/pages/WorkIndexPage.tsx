@@ -4,7 +4,25 @@ import {
   type WorkProjectSlug,
   workProjectMeta,
 } from '../data/workProjects'
-import { PreviewLayer, PreviewChrome, PreviewTopBar, FakeDots, PreviewLabel, PreviewFrame, LiveIframe } from './WorkIndexPage.styles'
+import {
+  Shell,
+  Inner,
+  PageTitle,
+  List,
+  Row,
+  RowTop,
+  IconWrap,
+  IconImg,
+  ProjectLink,
+  PreviewLayer,
+  PreviewChrome,
+  PreviewTopBar,
+  FakeDots,
+  PreviewLabel,
+  PreviewFrame,
+  LiveIframe,
+  Hint,
+} from './WorkIndexPage.styles'
 
 type RowPreviewProps = {
   slug: WorkProjectSlug
