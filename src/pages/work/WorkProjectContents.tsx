@@ -1,10 +1,5 @@
-import {
-  MosaicCell,
-  MosaicGrid,
-  WorkPageDescription,
-  WorkPageDescriptionTitle,
-  WorkPageDescriptionContainer,
-} from '../../components/WorkPageTemplate'
+import { MosaicCell } from '../../components/WorkPageTemplate'
+import { MosaicGrid, WorkPageDescription, WorkPageDescriptionTitle, WorkPageDescriptionContainer } from '../../components/WorkPageTemplate.styles'
 
 function MosaicImg({ src, alt }: { src: string; alt: string }) {
   return <img src={src} alt={alt} loading="lazy" decoding="async" />
