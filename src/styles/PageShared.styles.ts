@@ -28,7 +28,7 @@ export const PageTitle = styled.h1`
 export const PageTagline = styled.p`
   margin: 0;
   max-width: 40rem;
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: Bebas Neue, sans-serif;
   font-size: clamp(0.95rem, 2.2vw, 1.05rem);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.72);
