@@ -1,8 +1,7 @@
-import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Link, Outlet, useLocation, useNavigationType } from 'react-router-dom'
-import { BasicText } from './BasicText'
+import { Outlet, useLocation } from 'react-router-dom'
 import { SiteMenu } from './SiteMenu'
+import { PageStage, BottomBar, NameText, NameLink } from './AppLayout.styles'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 const DURATION = 0.4
@@ -29,63 +28,15 @@ const pageVariants = {
   }),
 }
 
-const PageStage = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #000;
-`
-
-const BottomBar = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 1.5rem 1.5rem 1.25rem;
-  background: #0a0a0c;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  box-sizing: border-box;
-  pointer-events: none;
-
-  & > * {
-    pointer-events: auto;
-  }
-`
-
-const NameText = styled(BasicText)`
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-`
-
-const NameLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-
-  &:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.85);
-    outline-offset: 6px;
-    border-radius: 4px;
-  }
-`
-
 export function AppLayout() {
   const location = useLocation()
-  const navigationType = useNavigationType()
-  const direction = navigationType === 'POP' ? -1 : 1
 
   return (
     <>
       <PageStage>
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence initial={false}>
           <motion.div
             key={location.pathname}
-            custom={direction}
             variants={pageVariants}
             initial="enter"
             animate="center"
