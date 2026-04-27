@@ -7,7 +7,6 @@ import {
 import {
   Shell,
   Inner,
-  PageTitle,
   List,
   Row,
   RowTop,
@@ -23,6 +22,8 @@ import {
   LiveIframe,
   Hint,
 } from './WorkIndexPage.styles'
+import { Tagline } from './ContactPage.styles'
+import { PageTitle } from '../styles/PageShared.styles'
 
 type RowPreviewProps = {
   slug: WorkProjectSlug
@@ -73,6 +74,7 @@ export function WorkIndexPage() {
     <Shell aria-label="Work index">
       <Inner>
         <PageTitle>Work</PageTitle>
+        <Tagline>Below are some of the projects I've worked on. Feel free to explore each one to learn more about my work!</Tagline>
         <List>
           {WORK_PROJECT_SLUGS.map((slug: WorkProjectSlug) => {
             const meta = workProjectMeta[slug]

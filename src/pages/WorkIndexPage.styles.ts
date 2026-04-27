@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import {
   BOTTOM_SAFE_LARGE,
   PageShell,
-  PageTitle as SharedPageTitle,
 } from "../styles/PageShared.styles"
 
 export const Shell = styled(PageShell)`
@@ -13,10 +12,6 @@ export const Shell = styled(PageShell)`
 export const Inner = styled.div`
   max-width: 56rem;
   margin: 0 auto;
-`
-
-export const PageTitle = styled(SharedPageTitle)`
-  margin-bottom: 1.5rem;
 `
 
 export const List = styled.ul`

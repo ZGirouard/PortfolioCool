@@ -20,7 +20,7 @@ export const Shell = styled.main`
   overflow: hidden;
   overscroll-behavior: none;
   background-color: #000;
-  background-image: url('/train_station.png');
+  background-image: url('/train_station.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
