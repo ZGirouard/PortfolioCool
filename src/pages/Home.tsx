@@ -1,12 +1,15 @@
 import { WorkCard } from '../components/WorkCard'
 import { WorkCarousel } from '../components/WorkCarousel'
 import { workProjectMeta } from '../data/workProjects'
-import { Shell, DimOverlay } from './Home.styles'
+import { Shell, DimOverlay, CarouselHint } from './Home.styles'
 
 export function HomePage() {
   return (
     <Shell aria-label="Home">
       <DimOverlay data-home-dim aria-hidden />
+      <CarouselHint>
+        Click or tap a project card to explore my work.
+      </CarouselHint>
       <WorkCarousel>
         <WorkCard
           to="/work/kiewit"
