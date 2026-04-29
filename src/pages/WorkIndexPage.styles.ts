@@ -104,18 +104,6 @@ export const PreviewLayer = styled.div<{ $active: boolean }>`
     opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 
-  @media (max-width: 719px) {
-    position: relative;
-    width: 100%;
-    max-height: ${(p) => (p.$active ? '220px' : 0)};
-    margin-bottom: ${(p) => (p.$active ? '0.35rem' : 0)};
-    overflow: hidden;
-    transition:
-      opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-      max-height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
   @media (min-width: 720px) {
     position: absolute;
     right: 0;

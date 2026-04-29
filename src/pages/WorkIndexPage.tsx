@@ -1,4 +1,10 @@
-import { useCallback, useId, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+  type FocusEvent as ReactFocusEvent,
+} from 'react'
 import {
   WORK_PROJECT_SLUGS,
   type WorkProjectSlug,
@@ -58,8 +64,27 @@ function RowPreview({ slug, active, labelledBy }: RowPreviewProps) {
   )
 }
 
+function useWorkHoverPreviewActive() {
+  const [matches, setMatches] = useState(() =>
+    typeof window !== 'undefined'
+      ? window.matchMedia('(min-width: 720px)').matches
+      : false,
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 720px)')
+    const apply = () => setMatches(mq.matches)
+    apply()
+    mq.addEventListener('change', apply)
+    return () => mq.removeEventListener('change', apply)
+  }, [])
+
+  return matches
+}
+
 export function WorkIndexPage() {
   const baseId = useId()
+  const hoverPreviewEnabled = useWorkHoverPreviewActive()
   const [openPreview, setOpenPreview] = useState<WorkProjectSlug | null>(null)
 
   const show = useCallback((slug: WorkProjectSlug) => {
@@ -84,14 +109,22 @@ export function WorkIndexPage() {
             return (
               <Row
                 key={slug}
-                onMouseEnter={() => show(slug)}
-                onMouseLeave={hide}
-                onFocusCapture={() => show(slug)}
-                onBlurCapture={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
-                    hide()
-                  }
-                }}
+                {...(hoverPreviewEnabled
+                  ? {
+                      onMouseEnter: () => show(slug),
+                      onMouseLeave: hide,
+                      onFocusCapture: () => show(slug),
+                      onBlurCapture: (e: ReactFocusEvent<HTMLLIElement>) => {
+                        if (
+                          !e.currentTarget.contains(
+                            e.relatedTarget as Node | null,
+                          )
+                        ) {
+                          hide()
+                        }
+                      },
+                    }
+                  : {})}
               >
                 <RowTop>
                   <IconWrap aria-hidden>
@@ -101,12 +134,18 @@ export function WorkIndexPage() {
                     {meta.title}
                   </ProjectLink>
                 </RowTop>
-                <RowPreview slug={slug} active={active} labelledBy={rowId} />
+                {hoverPreviewEnabled ? (
+                  <RowPreview slug={slug} active={active} labelledBy={rowId} />
+                ) : null}
               </Row>
             )
           })}
         </List>
-        <Hint>Hover a project for a live preview, or follow the link to open it.</Hint>
+        <Hint>
+          {hoverPreviewEnabled
+            ? 'Hover a project for a live preview, or follow the link to open it.'
+            : 'Tap a project to open it.'}
+        </Hint>
       </Inner>
     </Shell>
   )
