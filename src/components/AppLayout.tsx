@@ -37,6 +37,7 @@ export function AppLayout() {
         <AnimatePresence initial={false}>
           <motion.div
             key={location.pathname}
+            custom={1}
             variants={pageVariants}
             initial="enter"
             animate="center"
