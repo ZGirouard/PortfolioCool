@@ -27,6 +27,10 @@ const FRICTION_BASE = 0.942
 const MOMENTUM_STOP_SPEED = 0.032
 const DRAG_THRESHOLD_PX = 10
 
+function isCarouselNativeScrollPointer(e: ReactPointerEvent) {
+  return e.pointerType === 'touch'
+}
+
 export type WorkCarouselProps = {
   children: ReactNode
 }
@@ -214,6 +218,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
   }, [])
 
   const onPointerDown = (e: ReactPointerEvent) => {
+    if (isCarouselNativeScrollPointer(e)) return
     if (e.pointerType === 'mouse' && e.button !== 0) return
 
     stopMomentum()
@@ -236,6 +241,7 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
   }
 
   const onPointerMove = (e: ReactPointerEvent) => {
+    if (isCarouselNativeScrollPointer(e)) return
     const d = dragRef.current
     if (!d.active || e.pointerId !== d.pointerId) return
     const el = viewportRef.current
@@ -302,10 +308,12 @@ export function WorkCarousel({ children }: WorkCarouselProps) {
   }
 
   const onPointerUp = (e: ReactPointerEvent) => {
+    if (isCarouselNativeScrollPointer(e)) return
     finalizePointer(e.pointerId, true)
   }
 
   const onLostPointerCapture = (e: ReactPointerEvent) => {
+    if (isCarouselNativeScrollPointer(e)) return
     finalizePointer(e.pointerId, false)
   }
 

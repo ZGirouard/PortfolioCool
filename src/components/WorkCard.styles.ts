@@ -25,6 +25,12 @@ export const Card = styled.div<{ $backgroundColor: string }>`
     transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 
+  @media (max-width: 768px) {
+    width: min(280px, 84vw);
+    height: auto;
+    aspect-ratio: 440 / 300;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     transition-duration: 0.01ms;
   }
@@ -49,6 +55,11 @@ export const TitleLabel = styled.span`
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
 
+  @media (max-width: 768px) {
+    max-width: min(280px, 84vw);
+    font-size: clamp(0.9rem, 4.2vw, 1.2rem);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     transition-duration: 0.01ms;
   }
@@ -63,6 +74,12 @@ export const Image = styled.img`
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: min(148px, 41vw);
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
 `
 
 export const CardLink = styled(Link)`

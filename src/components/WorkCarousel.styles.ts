@@ -13,7 +13,8 @@ export const Viewport = styled.div<{ $dragging: boolean }>`
   overflow-y: visible;
   padding-top: 0.4rem;
   padding-bottom: 1.4rem;
-  touch-action: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
   cursor: ${(p) => (p.$dragging ? 'grabbing' : 'grab')};
   user-select: none;
   -webkit-user-select: none;
@@ -31,6 +32,10 @@ export const Track = styled.div`
   align-items: center;
   gap: 100px;
   width: max-content;
+
+  @media (max-width: 768px) {
+    gap: clamp(36px, 10vw, 56px);
+  }
 `
 
 export const Set = styled.div`
@@ -39,6 +44,10 @@ export const Set = styled.div`
   align-items: center;
   gap: 100px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    gap: clamp(36px, 10vw, 56px);
+  }
 `
 
 export const CardScaleSlot = styled.div`
